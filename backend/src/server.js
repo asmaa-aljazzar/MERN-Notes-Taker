@@ -17,7 +17,7 @@ dotenv.config();
 
 const app = express();
 
-const port = process.env.PORT || 4000 
+const port = process.env.PORT || 3002 
 const __dirname = path.resolve();
 
 //? middleware
@@ -47,7 +47,7 @@ app.use("/api/notes", notesRoutes);
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "../frontend/dist")))
 	// Express 5 doesn't accept * so add path 
-	app.get("*path", (req, res) => {
+	app.get("*", (req, res) => {
 		res.status (404).send ("Not Found");
 		res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
 	})
