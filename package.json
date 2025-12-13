@@ -1,0 +1,21 @@
+{
+  "name": "notes-taker",
+  "version": "1.0.0",
+  "description": "This is a full-stack note-taking application built using the MERN stack (MongoDB, Express.js, React, Node.js).   It allows users to create, read, update, and delete notes, with a responsive design and secure backend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asmaa-aljazzar/MERN-Notes-Taker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/asmaa-aljazzar/MERN-Notes-Taker/issues"
+  },
+  "homepage": "https://github.com/asmaa-aljazzar/MERN-Notes-Taker#readme"
+}
