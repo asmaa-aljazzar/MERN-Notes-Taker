@@ -1,6 +1,7 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import path from "path";
 
 // local
 import { connectDB } from "./config/db.js";
@@ -17,7 +18,7 @@ dotenv.config();
 const app = express();
 
 const PORT = process.env.PORT || 3001
-
+const __dirname = path.resolve();
 
 //? middleware
 // allows us to get access to the request body values.
@@ -31,12 +32,26 @@ const PORT = process.env.PORT || 3001
 
 app.use(express.json()); // This will parsing the json body
 // should be at the first before any api
-app.use (cors ({ // if without obj it is mean any url
-	origin: "http://localhost:5173",
-	credentials: true,
-}));
-app.use (ratelimiter);
-app.use ("/api/notes", notesRoutes);
+
+if (process.env.NODE_ENV !== "production") {
+
+	app.use(cors({ // if without obj it is mean any url
+		origin: "http://localhost:5173",
+		credentials: true,
+	}))
+};
+
+app.use(ratelimiter);
+app.use("/api/notes", notesRoutes);
+
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static(path.join(__dirname, "../frontend/dist")))
+	// Express 5 doesn't accept * so add path 
+	app.get("*path", (req, res) => {
+		res.status (404).send ("Not Found");
+		res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+	})
+};
 
 // listen to the server
 connectDB().then(() => {
