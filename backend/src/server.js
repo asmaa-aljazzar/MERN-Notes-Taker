@@ -45,13 +45,14 @@ app.use(ratelimiter);
 app.use("/api/notes", notesRoutes);
 
 if (process.env.NODE_ENV === "production") {
-	app.use(express.static(path.join(__dirname, "../frontend/dist")))
-	// Express 5 doesn't accept * so add path 
-	app.get("*path", (req, res) => {
-		res.status (404).send ("Not Found");
-		res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-	})
-};
+  // Serve static files from the frontend build
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  // Catch-all route: for any route not matching API, serve index.html (for client-side routing)
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+  });
+}
 
 // listen to the server
 connectDB().then(() => {
