@@ -1,5 +1,11 @@
 # MERN Stack Note-Taking Application
-<div style="font-size: 15px; "> <span style="color: purple">Visit The Application From </span><a href="https://mern-notes-taker.onrender.com">here</a></div>
+<p>
+  <strong>
+    <span style="color: purple;">Visit The Application From</span>
+    <a href="https://mern-notes-taker.onrender.com"> here</a>
+  </strong>
+</p>
+
 
 ## Project Overview
 
