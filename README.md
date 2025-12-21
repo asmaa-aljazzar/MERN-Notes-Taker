@@ -1,7 +1,7 @@
 # MERN Stack Note-Taking Application
 <p>
   <strong>
-    <span style="color: purple;">Visit The Application From</span>
+    Visit The Application From
     <a href="https://mern-notes-taker.onrender.com"> here</a>
   </strong>
 </p>
