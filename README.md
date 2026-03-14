@@ -76,7 +76,7 @@ npm start  '(or npm run dev)'
 - Frontend: 
  ```bash
 cd frontend 
-npm start 
+npm run dev 
 ```
 Click on the link that appears in your terminal
 
